@@ -1,0 +1,34 @@
+<template name="Invoices_newInvoice">
+    <form class="Invoices_newInvoice">
+        <div class="form-group">
+            <label for="email">Recipient email</label>
+            <input name="email"/>
+            {{#each error in errors "email"}}
+                <div class="form-error">{{error}}</div>
+            {{/each}}
+
+        </div>
+
+
+        <div class="form-group">
+            <label for="description">Item description</label>
+            <input type="text" name="description"/>
+            {{#each error in errors "description"}}
+                <div class="form-error">Error: {{error}}</div>
+            {{/each}}
+        </div>
+
+        <div class="form-group">
+            <label for="amount">Amount owed</label>
+            <input type="text" name="amount"/>
+            {{#each error in errors "amount"}}
+                <div class="form-error">Error {{error}}</div>
+            {{/each}}
+        </div>
+
+
+        <button type="submit">SUBMIT</button>
+    </form>
+
+
+</template>
