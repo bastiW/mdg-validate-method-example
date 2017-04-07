@@ -17,14 +17,7 @@ export const insert = new ValidatedMethod({
     run(newInvoice) {
 
 
-        // In here, we can be sure that the newInvoice argument is
-        // validated.
-        /*
-         if (!this.userId) {
-         throw new Meteor.Error('Invoices.methods.insert.not-logged-in',
-         'Must be logged in to create an invoice.');
-         }
-         */
+
         console.log('SUCCESS: Invoice insert: ', newInvoice)
     }
 });
