@@ -1,14 +1,21 @@
 import { Template } from 'meteor/templating';
+import {Session} from 'meteor/session'
 
 import { insert } from '../api/invoice.js';
 import './invoice-new-invoice.html';
 
 Template.Invoices_newInvoice.onCreated(function() {
-    this.errors = new ReactiveDict();
+    // this.newerrors = new ReactiveDict();
+
+
+    Session.set('email', [])
+      Session.set('description', [])
+        Session.set('amount', [])
 });
 Template.Invoices_newInvoice.helpers({
     errors(fieldName) {
-        return this.errors.get(fieldName);
+      return Session.get(fieldName)
+        // return this.newerrors.get(fieldName);
     }
 });
 Template.Invoices_newInvoice.events({
@@ -37,7 +44,10 @@ Template.Invoices_newInvoice.events({
                         errors[fieldError.name].push(fieldError.type);
                     });
                     // Update ReactiveDict, errors will show up in the UI
-                    instance.errors.set(errors);
+                    // instance.newerrors.set(errors);
+Session.set('email', errors.email)
+Session.set('description', errors.description)
+  Session.set('amount', errors.amount)
                 }
             }
         });
